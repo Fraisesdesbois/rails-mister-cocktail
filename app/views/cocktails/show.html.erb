@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+ <div class="container text-center">
+   <div class="row">
+     <div class="col-xs-12">
+       <div class="wrapper" style="background-image: url('<%= image_path("#{@cocktail.name.downcase}.png") %>');">
+       </div>
+     </div>
+     <div class="row">
+       <div class="col-xs-12">
+           <p>
+             <strong>Name:</strong>
+             <%= @cocktail.name %>
+           </p>
+           <p>
+             <strong>Doses:</strong>
+             <% unless @cocktail.doses == nil %>
+               <% @cocktail.doses.each do |dose| %>
+                 <ul>
+                   <li>
+                   <%= dose.description %>
+                   Ingredient: <%= dose.ingredient.name %>
+                   <%= link_to 'Delete the dose', cocktail_dose_path(dose), method: :delete %>
+                   </li>
+                 </ul>
+               <% end %>
+             <% end %>
+           </p>
+         </div>
+       </div>
+    </div>
+
+
+
+<%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail) %>
+<%= link_to 'Back', cocktails_path %>
