@@ -10,6 +10,7 @@
            <p>
              <strong>Name:</strong>
              <%= @cocktail.name %>
+             <%= cl_image_tag @cocktail.photo.url, height: 300, width: 400, crop: :fill %>
            </p>
            <p>
              <strong>Doses:</strong>
@@ -28,8 +29,6 @@
          </div>
        </div>
     </div>
-
-
 
 <%= link_to 'Add a dose', new_cocktail_dose_path(@cocktail) %>
 <%= link_to 'Back', cocktails_path %>
